@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reindirizzamento...</title>
+</head>
+<body>
+    <h2 style="text-align: center; font-family: sans-serif; margin-top: 50px;">
+        Autorizzazione ricevuta. <br> Apertura dell'app in corso...
+    </h2>
+    <script>
+        // Questa funzione prende il codice che Strava ci manda (es. ?code=12345)
+        // e lo passa alla tua app nativa installata sul telefono.
+        
+        // IL TUO APP ID ESATTO:
+        var appScheme = "com.tuo.cyclingtrainingcompanion://callback";
+        
+        // Costruiamo il link finale (es. com.tuo...://callback?code=12345...)
+        var finalUrl = appScheme + window.location.search;
+
+        // Eseguiamo il reindirizzamento
+        window.location.href = finalUrl;
+        
+        // Fallback: se l'app non si apre entro 2 secondi, mostra un messaggio
+        setTimeout(function() {
+            document.body.innerHTML += '<p style="text-align:center; color: red;">Se l\'app non si apre, assicurati che sia installata.</p>';
+        }, 2000);
+    </script>
+</body>
+</html>
